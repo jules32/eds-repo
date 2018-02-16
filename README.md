@@ -5,5 +5,7 @@ This is a test of eco-data-science, learning GitHub.
 
 This is awesome.
 
-**Jamie is adding lines here.** and they are amazing
+
+***Jamie is adding lines here.***
+
 

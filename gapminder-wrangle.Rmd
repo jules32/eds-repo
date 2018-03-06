@@ -96,7 +96,53 @@ gap_cambodia <- gapminder %>%
 
 to add variables using `mutate()`
 ```{r}
+gapminder %>%
+  mutate(index = 1:nrow(gapminder))
 
+gapminder %>%
+  mutate(gdp = pop * gdpPercap)
+```
+
+Find the maximum gpdPercap of Egypt and Vietnam, and save it in a new column. 
+```{r}
+## find the max of both Egypt and Vietnam together
+x <- gapminder %>%
+  filter(country %in% c("Egypt", "Vietnam")) %>%
+  mutate(max_gdp = max(gdpPercap))
+
+## find the max of Egypt and Vietnam separately
+x2 <- gapminder %>%
+  filter(country %in% c("Egypt", "Vietnam")) %>%
+  group_by(country) %>%
+  mutate(max_gdp = max(gdpPercap)) %>%
+  ungroup() # important to remember to ungroup
+
+
+str(x2)
+
+```
+
+
+summarize and group_by together!
+```{r}
+gapminder %>%
+  group_by(country) %>%
+  mutate(gdp = pop * gdpPercap) %>%
+  summarize(max_gdp = max(gdp)) %>%
+  ungroup() %>%
+  arrange(desc(max_gdp))
+```
+
+Let's find the max lifeExp for countries in Asia
+Hint max() 
+```{r}
+asia <- gapminder %>%
+  filter(continent == "Asia") %>%
+  group_by(country) %>%
+  mutate(gdp = pop * gdpPercap) %>%
+  summarize(max_gdp = max(gdp)) %>%
+  ungroup() %>%
+  arrange(desc(max_gdp))
 ```
 
 

@@ -1,0 +1,58 @@
+---
+title: "Gapminder Wrangle"
+author: "Julie"
+date: "3/6/2018"
+output: html_document
+---
+
+We're going to wrangle gapminder data using `dplyr`.
+
+```{r}
+library(tidyverse)  # install.packages('tidyverse')
+
+## read in data from a url
+gapminder <- read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+```
+
+Explore the dataframe as a whole 
+```{r}
+
+head(gapminder)
+tail(gapminder)
+head(gapminder, 10)
+
+## look at structure
+str(gapminder)
+
+## some other info about our dataframe
+names(gapminder)
+dim(gapminder)
+ncol(gapminder)
+nrow(gapminder)
+
+## create dim from ncol nrow
+c( nrow(gapminder), ncol(gapminder) )
+
+
+## summary statistics
+summary(gapminder)
+
+library(skimr) # install.packages('skimr')
+skim(gapminder)
+```
+
+
+Explore inside the dataframe `$`
+```{r}
+gapminder$lifeExp
+head(gapminder$lifeExp)
+str(gapminder$lifeExp)
+```
+
+Using dplyr!
+```{r}
+
+```
+
+
+
